@@ -1,5 +1,7 @@
 
-# News Automator
+ # News Automator - CS50P Final Project
+  #### Video Demo:  <https://youtu.be/iHCkeewtyvE>
+
 
 This is a Python script that allows you to retrieve news articles and sources from the [News API](https://newsapi.org/). It provides the following functionalities:
 
@@ -25,7 +27,7 @@ Clone this repository to your local machine:
 ```bash
   git clone <repository-url>
 ```
-    
+
 Install the required Python packages:
 
 ```bash
@@ -66,6 +68,11 @@ python news.py category technology
 ```
 
 #### Search for articles by query:
+```bash
+python news.py query Trump
+
+```
+or
 ```bash
 python news.py query Trump --language en
 
