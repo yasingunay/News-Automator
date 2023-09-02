@@ -5,15 +5,19 @@ from news import (
     NewsAPIClient,
 )
 import pytest
-null = ""
+
+null = ""  # null is not defined in Python, so we define it as an empty string for the tests
 
 
+# Mock the NewsAPIClient class
 @pytest.fixture
 def mock_api_client(mocker):
+    # Create a mock object for the NewsAPIClient class
     return mocker.Mock(spec=NewsAPIClient)
 
 
 def test_get_articles_by_category(mock_api_client):
+    """Test get_articles_by_category."""
     # Mock the API client's get_articles method
     mock_api_client.get_articles.return_value = [
         {
@@ -51,6 +55,7 @@ def test_get_articles_by_category(mock_api_client):
 
 
 def test_get_sources_by_country(mock_api_client):
+    """Test get_sources_by_country."""
     mock_api_client.get_sources.return_value = [
         {
             "id": "ars-technica",
@@ -81,36 +86,32 @@ def test_get_sources_by_country(mock_api_client):
 
 
 def test_get_articals_by_query(mock_api_client):
-    mock_api_client.get_articles.return_value = [{
-    "source": {
-      "id": null,
-      "name": "Mediapart"
-    },
-    "author": "Mathilde Goanec",
-    "title": "L\u2019\u00e9cole selon Macron: ne manque plus que le lever de drapeau et l\u2019hymne national",
-    "description": "Le pr\u00e9sident de la R\u00e9publique est d\u00e9cid\u00e9ment de la vieille \u00e9cole. Tout \u00e0 son projet de \u00ab\u00a0reciviliser\u00a0\u00bb une \u00ab\u00a0partie de la jeunesse\u00a0\u00bb, il veut faire de l\u2019\u00e9ducation son \u00ab\u00a0domaine r\u00e9serv\u00e9\u00a0\u00bb, en lui appliquant des recettes d\u00e9j\u00e0 dat\u00e9es.",
-    "url": "https://www.mediapart.fr/journal/france/240823/l-ecole-selon-macron-ne-manque-plus-que-le-lever-de-drapeau-et-l-hymne-national",
-    "urlToImage": "https://static.mediapart.fr/etmagine/og/journal/files/2023/08/24/20230824-img-macron-maitre-de-l-ecole-1.jpg",
-    "publishedAt": "2023-08-24T16:11:03Z",
-    "content": "Les cookies et technologies similaires que nous utilisons sur Mediapart sont de diff\u00e9rentes natures et nous permettent de poursuivre diff\u00e9rentes finalit\u00e9s. \r\nCertains sont n\u00e9cessaires au fonctionneme\u2026 [+1247 chars]"
-  },
-  {
-    "source": {
-      "id": null,
-      "name": "Mediapart"
-    },
-    "author": "Floriane Louison",
-    "title": "Un milliard d\u2019arbres: le bluff \u00e9colo de Macron pour sauver la for\u00eat",
-    "description": "Un plan de renouvellement forestier est en cours d\u2019\u00e9laboration pour adapter la for\u00eat fran\u00e7aise au changement climatique. Il est orient\u00e9 autour d\u2019une annonce phare d\u2019Emmanuel Macron\u00a0: planter un milliard d\u2019arbres d\u2019ici \u00e0 dix\u00a0ans. Mais derri\u00e8re le coup de com\u2019 \u2026",
-    "url": "https://www.mediapart.fr/journal/ecologie/070823/un-milliard-d-arbres-le-bluff-ecolo-de-macron-pour-sauver-la-foret",
-    "urlToImage": "https://static.mediapart.fr/etmagine/og/journal/files/2023/08/04/024-4124110.jpg",
-    "publishedAt": "2023-08-07T10:54:34Z",
-    "content": "Les cookies et technologies similaires que nous utilisons sur Mediapart sont de diff\u00e9rentes natures et nous permettent de poursuivre diff\u00e9rentes finalit\u00e9s. \r\nCertains sont n\u00e9cessaires au fonctionneme\u2026 [+1247 chars]"
-  },]
-    
+    """Test get_articals_by_query."""
+    mock_api_client.get_articles.return_value = [
+        {
+            "source": {"id": null, "name": "Mediapart"},
+            "author": "Mathilde Goanec",
+            "title": "L\u2019\u00e9cole selon Macron: ne manque plus que le lever de drapeau et l\u2019hymne national",
+            "description": "Le pr\u00e9sident de la R\u00e9publique est d\u00e9cid\u00e9ment de la vieille \u00e9cole. Tout \u00e0 son projet de \u00ab\u00a0reciviliser\u00a0\u00bb une \u00ab\u00a0partie de la jeunesse\u00a0\u00bb, il veut faire de l\u2019\u00e9ducation son \u00ab\u00a0domaine r\u00e9serv\u00e9\u00a0\u00bb, en lui appliquant des recettes d\u00e9j\u00e0 dat\u00e9es.",
+            "url": "https://www.mediapart.fr/journal/france/240823/l-ecole-selon-macron-ne-manque-plus-que-le-lever-de-drapeau-et-l-hymne-national",
+            "urlToImage": "https://static.mediapart.fr/etmagine/og/journal/files/2023/08/24/20230824-img-macron-maitre-de-l-ecole-1.jpg",
+            "publishedAt": "2023-08-24T16:11:03Z",
+            "content": "Les cookies et technologies similaires que nous utilisons sur Mediapart sont de diff\u00e9rentes natures et nous permettent de poursuivre diff\u00e9rentes finalit\u00e9s. \r\nCertains sont n\u00e9cessaires au fonctionneme\u2026 [+1247 chars]",
+        },
+        {
+            "source": {"id": null, "name": "Mediapart"},
+            "author": "Floriane Louison",
+            "title": "Un milliard d\u2019arbres: le bluff \u00e9colo de Macron pour sauver la for\u00eat",
+            "description": "Un plan de renouvellement forestier est en cours d\u2019\u00e9laboration pour adapter la for\u00eat fran\u00e7aise au changement climatique. Il est orient\u00e9 autour d\u2019une annonce phare d\u2019Emmanuel Macron\u00a0: planter un milliard d\u2019arbres d\u2019ici \u00e0 dix\u00a0ans. Mais derri\u00e8re le coup de com\u2019 \u2026",
+            "url": "https://www.mediapart.fr/journal/ecologie/070823/un-milliard-d-arbres-le-bluff-ecolo-de-macron-pour-sauver-la-foret",
+            "urlToImage": "https://static.mediapart.fr/etmagine/og/journal/files/2023/08/04/024-4124110.jpg",
+            "publishedAt": "2023-08-07T10:54:34Z",
+            "content": "Les cookies et technologies similaires que nous utilisons sur Mediapart sont de diff\u00e9rentes natures et nous permettent de poursuivre diff\u00e9rentes finalit\u00e9s. \r\nCertains sont n\u00e9cessaires au fonctionneme\u2026 [+1247 chars]",
+        },
+    ]
 
-# Call the function being tested
-    result = get_articles_by_query("Macron", mock_api_client)
+    # Call the function being tested
+    result = get_articles_by_query("Macron", "fr", mock_api_client)
 
     assert len(result) == 2
     assert result[0]["author"] == "Mathilde Goanec"
