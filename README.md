@@ -1,5 +1,5 @@
 
-# News Automator
+# News Automator - CS50P Final Project
 
 This is a Python script that allows you to retrieve news articles and sources from the [News API](https://newsapi.org/). It provides the following functionalities:
 
