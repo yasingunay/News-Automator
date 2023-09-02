@@ -39,8 +39,6 @@ You can run the script with the following command-line arguments:
 - `value`: The category, query, or country (depending on the action).
 - `--language` (optional): The language for query search (e.g., 'en' for English, 'fr' for French).
 
-### Examples
-
 #### Get top headlines by category:
 ```bash
 python news.py category <category>
@@ -56,6 +54,25 @@ python news.py query <query> [--language <language>]
 #### Get news sources by country:
 ```bash
 python news.py sources <country>
+
+```
+
+## Examples
+
+#### Get top headlines by category:
+```bash
+python news.py category technology
+
+```
+
+#### Search for articles by query:
+```bash
+python news.py query Trump --language en
+
+```
+#### Get news sources by country:
+```bash
+python news.py sources us
 
 ```
 ## Output
