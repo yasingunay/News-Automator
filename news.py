@@ -48,8 +48,8 @@ def get_articles_by_query(query):
     return _get_everything(URL_EVERYTHING, query_parameters)
 
 
-def _get_everything(params):
-    response = requests.get(URL_EVERYTHING, params=params)
+def _get_everything(url, params):
+    response = requests.get(url, params=params)
     articles = response.json()["articles"]
     # print(json.dumps(sources, indent=2)) # pretty print
 
@@ -130,5 +130,18 @@ def get_sources_by_country(country):
 
 
 if __name__ == "__main__":
-   parser = argparse.ArgumentParser(description="Get news from News API")
-   parser.add_argument("action" 
+    parser = argparse.ArgumentParser(description="Get news from News API")
+    parser.add_argument("action", choices=["category", "query", "sources"], help="Action to perform")
+    parser.add_argument("value", help="Category, query, or country")
+
+    args = parser.parse_args()
+
+    if args.action == "category":
+        if args.value in CATEGORIES:
+            get_articles_by_category(args.value)
+        else:
+           print("Invalid category. Available categories:", ", ".join(CATEGORIES)) 
+    elif args.action == "query":
+        get_articles_by_query(args.value)
+    elif args.action == "sources":
+        get_sources_by_country(args.value)
